@@ -23,5 +23,8 @@
   - role: '{{ playbook_dir }}'
     sshkey_pki_dir: '{{ playbook_dir }}/test-pki'
     sshkey_target_dir: /tmp/test2
+    sshkey_target_perms:
+      owner: root
+      group: root
     sshkey_override_target_cert: cert.pem
     sshkey_override_target_key: key.pem

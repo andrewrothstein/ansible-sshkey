@@ -14,3 +14,15 @@
     src: '{{ sshkey_pki_dir }}/{{ item.s }}'
     dest: '{{ sshkey_target_dir }}/{{ item.t }}'
     mode: '{{ item.m | default("0600") }}'
+- name: fix owner/group
+  become: '{{ sshkey_become }}'
+  become_user: '{{ sshkey_become_user }}'
+  when: sshkey_target_perms is defined
+  with_items:
+    - '{{ sshkey_target_key_file }}'
+    - '{{ sshkey_target_cert_file }}'
+    - '{{ sshkey_target_cacert_file }}'
+  file:
+    path: '{{ sshkey_target_dir }}/{{ item }}'
+    owner: '{{ sshkey_target_perms.owner }}'
+    group: '{{ sshkey_target_perms.group }}'
