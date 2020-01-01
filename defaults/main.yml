@@ -1,0 +1,36 @@
+---
+# defaults file for ansible-sshkey
+
+sshkey_become: False
+sshkey_become_user: root
+
+#sshkey_pki_dir: ~/pki-dir
+sshkey_cacert_prefix: ca
+sshkey_cert_suffix: .pem
+sshkey_key_suffix: -key.pem
+
+# to control the user/group of the target files
+#sshkey_target_perms:
+#  owner: consul
+#  group: consul
+
+# name in the pki_dir for finding the host specific cert/key files
+# defaults to the inventory_hostname
+#sshkey_hostname: '{{ inventory_hostname }}'
+
+#sshkey_target_dir: /etc/foo/pki
+sshkey_target_cacert_prefix: ca
+sshkey_target_cert_suffix: .pem
+sshkey_target_key_suffix: -key.pem
+
+# name of the stem of the target host cert/key files to install
+#sshkey_target_hostname: '{{ inventory_hostname }}'
+
+# overrides
+# for example, target system expects
+# target_dir/ca.pem
+# target_dir/cert.pem
+# target_dir/key.pem
+#sshkey_target_dir: target_dir
+#sshkey_override_target_cert: cert.pem
+#sshkey_override_target_key: key.pem

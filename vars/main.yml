@@ -1,0 +1,10 @@
+---
+# vars file for ansible-sshkey
+
+sshkey_src_cacert_file: '{{ sshkey_cacert_prefix }}{{ sshkey_cert_suffix }}'
+sshkey_src_cert_file: '{{ sshkey_hostname | default(inventory_hostname) }}{{ sshkey_cert_suffix }}'
+sshkey_src_key_file: '{{ sshkey_hostname | default(inventory_hostname) }}{{ sshkey_key_suffix }}'
+
+sshkey_target_cacert_file: '{% if sshkey_override_target_cacert is defined %}{{ sshkey_override_target_cacert }}{% else %}{{ sshkey_target_cacert_prefix }}{{ sshkey_target_cert_suffix }}{% endif %}'
+sshkey_target_cert_file: '{% if sshkey_override_target_cert is defined %}{{ sshkey_override_target_cert }}{% else %}{{ sshkey_target_hostname | default(inventory_hostname) }}{{ sshkey_target_cert_suffix }}{% endif %}'
+sshkey_target_key_file: '{% if sshkey_override_target_key is defined %}{{ sshkey_override_target_key }}{% else %}{{ sshkey_target_hostname | default(inventory_hostname) }}{{ sshkey_target_key_suffix }}{% endif %}'

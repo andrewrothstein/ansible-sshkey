@@ -1,0 +1,16 @@
+---
+- name: install keys/certs
+  become: '{{ sshkey_become }}'
+  become_user: '{{ sshkey_become_user }}'
+  with_items:
+    - s: '{{ sshkey_src_key_file }}'
+      t: '{{ sshkey_target_key_file }}'
+      m: '0400'
+    - s: '{{ sshkey_src_cert_file }}'
+      t: '{{ sshkey_target_cert_file }}'
+    - s: '{{ sshkey_src_cacert_file }}'
+      t: '{{ sshkey_target_cacert_file }}'
+  copy:
+    src: '{{ sshkey_pki_dir }}/{{ item.s }}'
+    dest: '{{sshkey_target_dir }}/{{ item.t }}'
+    mode: '{{ item.m | default("0600") }}'
