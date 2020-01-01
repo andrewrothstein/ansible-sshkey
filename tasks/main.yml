@@ -12,5 +12,5 @@
       t: '{{ sshkey_target_cacert_file }}'
   copy:
     src: '{{ sshkey_pki_dir }}/{{ item.s }}'
-    dest: '{{sshkey_target_dir }}/{{ item.t }}'
+    dest: '{{ sshkey_target_dir }}/{{ item.t }}'
     mode: '{{ item.m | default("0600") }}'
