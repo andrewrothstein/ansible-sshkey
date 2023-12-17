@@ -1,6 +1,6 @@
 andrewrothstein.sshkey
 =========
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-sshkey.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-sshkey)
+![Build Status](https://github.com/andrewrothstein/ansible-sshkey/actions/workflows/build.yml/badge.svg)
 
 Installs a CA certificate, a host certificate, and a host private key onto the target hosts filesystem
 

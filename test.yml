@@ -5,26 +5,26 @@
       file:
         path: /tmp/test1
         state: directory
-        mode: 0755
+        mode: '755'
 - hosts: all
   roles:
-  - role: '{{ playbook_dir }}'
-    sshkey_pki_dir: '{{ playbook_dir }}/test-pki'
-    sshkey_target_dir: /tmp/test1
+    - role: '{{ playbook_dir }}'
+      sshkey_pki_dir: '{{ playbook_dir }}/test-pki'
+      sshkey_target_dir: /tmp/test1
 - hosts: all
   tasks:
     - name: mkdir test2
       file:
         path: /tmp/test2
         state: directory
-        mode: 0755
+        mode: '755'
 - hosts: all
   roles:
-  - role: '{{ playbook_dir }}'
-    sshkey_pki_dir: '{{ playbook_dir }}/test-pki'
-    sshkey_target_dir: /tmp/test2
-    sshkey_target_perms:
-      owner: root
-      group: root
-    sshkey_override_target_cert: cert.pem
-    sshkey_override_target_key: key.pem
+    - role: '{{ playbook_dir }}'
+      sshkey_pki_dir: '{{ playbook_dir }}/test-pki'
+      sshkey_target_dir: /tmp/test2
+      sshkey_target_perms:
+        owner: root
+        group: root
+      sshkey_override_target_cert: cert.pem
+      sshkey_override_target_key: key.pem
